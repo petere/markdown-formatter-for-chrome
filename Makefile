@@ -2,7 +2,7 @@ CONVERT = convert
 JSHINT = jshint
 JSONLINT = jsonlint
 
-icon_sizes = 16 48 128
+icon_sizes = 16 19 38 48 128
 icons = $(icon_sizes:%=icon-%.png)
 
 
@@ -27,5 +27,5 @@ realclean:
 	$(RM) commonmark.js markdown-mark.svg
 
 check:
-	$(JSHINT) content.js inject.js
+	$(JSHINT) background.js content.js
 	$(JSONLINT) manifest.json

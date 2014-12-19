@@ -1,18 +1,12 @@
 var htmlElement;
 var rawElement;
+var showingRaw = true;
 
 document.addEventListener("DOMContentLoaded", function() {
   var bodyChildren = document.body.childNodes ;
   var pre = bodyChildren[0] ;
   if (bodyChildren.length > 2 || pre.tagName != 'PRE')
     return;
-
-  var s = document.createElement('script');
-  s.src = chrome.extension.getURL('inject.js');
-  s.onload = function() {
-    this.parentNode.removeChild(this);
-  };
-  (document.head||document.documentElement).appendChild(s);
 
   rawElement = pre;
 
@@ -23,19 +17,15 @@ document.addEventListener("DOMContentLoaded", function() {
   formatted.innerHTML = writer.render(parsed);
   htmlElement = formatted;
 
-  var buttons = document.createElement('div');
-  buttons.innerHTML = '<a href="javascript:show_raw()">Raw Markdown</a> <a href="javascript:show_html()">HTML</a>';
-  document.body.insertBefore(buttons, document.body.firstChild);
+  chrome.runtime.sendMessage("show_page_action", function(response) {});
 });
 
-document.addEventListener('showRaw', function() {
-  console.log('showRaw');
-  document.body.removeChild(document.body.lastChild);
-  document.body.insertBefore(rawElement, null);
-});
-
-document.addEventListener('showHtml', function() {
-  console.log('showHtml');
-  document.body.removeChild(document.body.lastChild);
-  document.body.insertBefore(htmlElement, null);
-});
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request == "toggle_markdown") {
+      showingRaw = !showingRaw;
+      document.body.removeChild(document.body.lastChild);
+      document.body.insertBefore(showingRaw ? rawElement : htmlElement, null);
+    }
+  }
+);

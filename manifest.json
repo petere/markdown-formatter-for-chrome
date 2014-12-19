@@ -9,6 +9,9 @@
     "48": "icon-48.png",
     "128": "icon-128.png"
   },
+  "background": {
+    "scripts": ["background.js"]
+  },
   "content_scripts": [
     {
       "matches": [
@@ -22,7 +25,11 @@
       "run_at": "document_start"
     }
   ],
-  "web_accessible_resources": [
-    "inject.js"
-  ]
+  "page_action": {
+    "default_icon": {
+      "19": "icon-19.png",
+      "38": "icon-38.png"
+    },
+    "default_title": "Markdown"
+  }
 }
