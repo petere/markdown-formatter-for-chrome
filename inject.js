@@ -1,9 +1,11 @@
 function show_raw() {
-  document.getElementsByClassName("markdown")[0].style.display = 'block';
-  document.getElementsByClassName("html")[0].style.display = 'none';
+  var evt = document.createEvent('Event');
+  evt.initEvent('showRaw', true, false);
+  document.dispatchEvent(evt);
 }
 
 function show_html() {
-  document.getElementsByClassName("markdown")[0].style.display = 'none';
-  document.getElementsByClassName("html")[0].style.display = 'block';
+  var evt = document.createEvent('Event');
+  evt.initEvent('showHtml', true, false);
+  document.dispatchEvent(evt);
 }
