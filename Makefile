@@ -28,4 +28,4 @@ realclean:
 
 check:
 	$(JSHINT) background.js content.js
-	$(JSONLINT) manifest.json
+	$(JSONLINT) -q manifest.json
