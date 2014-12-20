@@ -12,6 +12,15 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "commands": {
+    "toggle-markdown": {
+      "suggested_key": {
+        "default": "Ctrl+M",
+        "mac": "MacCtrl+M"
+      },
+      "description": "Toggle between Markdown and HTML"
+    }
+  },
   "content_scripts": [
     {
       "matches": [

@@ -5,8 +5,15 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
-chrome.pageAction.onClicked.addListener(function() {
+function send_toggle_markdown() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, "toggle_markdown", function(response) {});
   });
+}
+
+chrome.pageAction.onClicked.addListener(send_toggle_markdown);
+
+chrome.commands.onCommand.addListener(function(command) {
+  if (command == "toggle-markdown")
+    send_toggle_markdown();
 });
