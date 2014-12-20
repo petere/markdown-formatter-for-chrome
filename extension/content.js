@@ -1,3 +1,10 @@
+function unescapeHTML(val) {
+  return val
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
 var htmlElement;
 var rawElement;
 var showingRaw = true;
@@ -12,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   var reader = new commonmark.DocParser();
   var writer = new commonmark.HtmlRenderer();
-  var parsed = reader.parse(pre.innerHTML);
+  var parsed = reader.parse(unescapeHTML(pre.innerHTML));
   var formatted = document.createElement('div') ;
   formatted.innerHTML = writer.render(parsed);
   htmlElement = formatted;
