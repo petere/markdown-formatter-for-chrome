@@ -23,7 +23,7 @@ markdown-mark.svg:
 clean:
 	$(RM) $(icons)
 
-realclean:
+realclean: clean
 	$(RM) commonmark.js markdown-mark.svg
 
 check:
