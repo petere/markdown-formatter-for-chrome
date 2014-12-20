@@ -1,0 +1,7 @@
+{
+  "description": "This is not a real npm package.  This file is here just to make it easy to install dev dependencies.",
+  "devDependencies": {
+    "jshint": "*",
+    "jsonlint": "*"
+  }
+}
