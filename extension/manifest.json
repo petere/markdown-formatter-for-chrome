@@ -17,8 +17,12 @@
       "matches": [
         "*://*/*.md",
         "*://*/*.markdown",
+        "*://*/*.text",
+        "*://*/*.txt",
         "file://*.md",
-        "file://*/*.markdown"
+        "file://*.markdown",
+        "file://*.text",
+        "file://*.txt"
       ],
       "js": ["commonmark.js", "content.js"],
       "all_frames": true,
