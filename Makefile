@@ -1,6 +1,7 @@
 CONVERT = convert
 JSHINT = jshint
 JSONLINT = jsonlint
+WGET = wget
 
 icon_sizes = 16 19 38 48 128
 icons = $(icon_sizes:%=icon-%.png)
@@ -14,11 +15,10 @@ icon-%.png: markdown-mark.svg
 	$(CONVERT) $< -resize $*x$* $@
 
 commonmark.js:
-	@echo "Get $@ from <https://github.com/jgm/CommonMark>."
-	@exit 1
+	$(WGET) http://spec.commonmark.org/js/commonmark.js
 
 markdown-mark.svg:
-	wget https://raw.githubusercontent.com/dcurtis/markdown-mark/master/svg/markdown-mark.svg
+	$(WGET) https://raw.githubusercontent.com/dcurtis/markdown-mark/master/svg/markdown-mark.svg
 
 clean:
 	$(RM) $(icons)
