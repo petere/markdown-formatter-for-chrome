@@ -4,28 +4,28 @@ JSONLINT = jsonlint
 WGET = wget
 
 icon_sizes = 16 19 38 48 128
-icons = $(icon_sizes:%=icon-%.png)
+icons = $(icon_sizes:%=extension/icon-%.png)
 
 
-all: icons commonmark.js
+all: icons extension/commonmark.js
 
 icons: $(icons)
 
-icon-%.png: markdown-mark.svg
+extension/icon-%.png: markdown-mark.svg
 	$(CONVERT) $< -resize $*x$* $@
 
-commonmark.js:
-	$(WGET) http://spec.commonmark.org/js/commonmark.js
+extension/commonmark.js:
+	$(WGET) -O $@ http://spec.commonmark.org/js/commonmark.js
 
 markdown-mark.svg:
-	$(WGET) https://raw.githubusercontent.com/dcurtis/markdown-mark/master/svg/markdown-mark.svg
+	$(WGET) -O $@ https://raw.githubusercontent.com/dcurtis/markdown-mark/master/svg/markdown-mark.svg
 
 clean:
 	$(RM) $(icons)
 
 realclean: clean
-	$(RM) commonmark.js markdown-mark.svg
+	$(RM) extension/commonmark.js markdown-mark.svg
 
 check:
-	$(JSHINT) background.js content.js
-	$(JSONLINT) -q manifest.json package.json
+	$(JSHINT) extension/background.js extension/content.js
+	$(JSONLINT) -q extension/manifest.json package.json
