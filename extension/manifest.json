@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Markdown Formatter",
-  "version": "0",
+  "version": "1.2014.12.20",
   "description": "Formats Markdown files as HTML.",
   "homepage_url": "https://github.com/petere/markdown-formatter-for-chrome",
   "icons": {
