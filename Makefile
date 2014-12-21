@@ -2,6 +2,7 @@ CONVERT = convert
 JSHINT = jshint
 JSONLINT = jsonlint
 WGET = wget
+ZIP = zip
 
 icon_sizes = 16 19 38 48 128
 icons = $(icon_sizes:%=extension/icon-%.png)
@@ -25,7 +26,12 @@ clean:
 
 realclean: clean
 	$(RM) extension/commonmark.js markdown-mark.svg
+	$(RM) extension.zip
 
 check:
 	$(JSHINT) extension/background.js extension/content.js
 	$(JSONLINT) -q extension/manifest.json package.json
+
+zip: extension.zip
+extension.zip:
+	$(ZIP) -r $@ extension/
