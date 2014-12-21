@@ -1,6 +1,8 @@
 Markdown Formatter
 ==================
 
+*Available in the [Chrome Web Store](https://chrome.google.com/webstore/detail/markdown-formatter/koaflnhbkgmemhdekjhffbhldgjpiolm)*
+
 This is an extension for Google Chrome™ that formats Markdown text as
 HTML.  Click on the Markdown icon in the address bar or press Ctrl+M
 to toggle between raw and HTML view.
@@ -11,8 +13,8 @@ It works for the following file extensions:
 - `.text`
 - `.txt`
 
-Installation
-------------
+Installation from source
+------------------------
 
 1. download this repository
 2. run `make`
